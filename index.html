@@ -4,6 +4,7 @@
 <html lang="en">
    <head>
       <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Matching Game</title>
       <meta name="description" content="">
       <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -78,7 +79,8 @@
             </li>
          </ul>
       </div>
-      <dialog id="styledModal">
+      <div id="myModal">
+        <div id="modalContent">
          <p>Congratulations! You Won!</p>
          <p class="yourTime" >Your Time: </p>
          <p class="yourRating" >Stars Received</p>
@@ -90,7 +92,8 @@
             </div>
          </div>
          <button class="closeButton">Play Again</button>
-      </dialog>
+        </div>
+      </div>
       <script src="js/app.js"></script>
    </body>
 </html>

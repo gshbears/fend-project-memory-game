@@ -118,7 +118,6 @@ function getTimePlayedString(tTime){
 	return strMin + strSec;
 }
 
-
 function resetForm() {
 	shuffle(memoryCards);
 	// clear previous card game
@@ -130,9 +129,8 @@ function resetForm() {
 	resetModalStars();
 
 	resetMoves();
-
+// sets timer back to 0, timer will start when user selects 1st card
 	resetTimer();
-//	startTimer();
 }
 document.addEventListener("DOMContentLoaded", function(event) {
   	resetForm();
@@ -166,7 +164,7 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-const styledModal = document.getElementById('styledModal');
+const styledModal = document.getElementById('myModal');
 
 function updateScore() {
 	intMoves += 1;
@@ -239,7 +237,6 @@ function checkEndGame(){
 		setTimeout(function () {
 			if (intMatchCount === 8) {
 				endGame();
-		//		resetTimer();
 		  }
 	},1000);
 }
@@ -260,9 +257,11 @@ elementCards.addEventListener('click', function (evt) {
 function endGame() {
 	//  Display the time of the game to to the user in the modal
 	document.querySelector('.yourTime').innerHTML = "Your Time: " + getTimePlayedString(tendTime);
-	styledModal.showModal();
+//	Show modal to user;
+	styledModal.style.display = "block";
 }
 document.querySelector('.closeButton').addEventListener('click', function () {
-	styledModal.close();
+//	hide modal from user;
+	styledModal.style.display = "none";
 	resetForm();
 })
