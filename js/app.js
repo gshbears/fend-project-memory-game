@@ -262,7 +262,7 @@ function endGame() {
 	document.querySelector('.yourTime').innerHTML = "Your Time: " + getTimePlayedString(tendTime);
 	styledModal.showModal();
 }
-document.querySelector('.close').addEventListener('click', function () {
+document.querySelector('.closeButton').addEventListener('click', function () {
 	styledModal.close();
 	resetForm();
 })
