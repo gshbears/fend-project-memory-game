@@ -71,21 +71,41 @@ h1 {
 }
 
 .deck .card.open {
-	transform: rotateY(0);
-	background: #02b3e4;
 	cursor: default;
+	animation-name: flipUpYAxis;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+  animation-duration: .75s;
 }
 
 .deck .card.show {
+	background: #02b3e4;
 	font-size: 33px;
+	cursor: default;
 }
 
 .deck .card.match {
 	cursor: default;
 	background: #02ccba;
 	font-size: 33px;
+	animation-name: rubberBand;
+/*	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important; */
+	animation-duration: .75s;
 }
-
+.deck .card.no_Match{
+	background: #ff0000;
+	font-size: 33px;
+	animation-name: shakeIt;
+	animation-duration: .75s;
+}
+.deck .card.close{
+	font-size: 33px;
+	animation-name: flipDownYAxis;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+}
 
 /*
  * Styles for the Score Panel
@@ -113,8 +133,9 @@ h1 {
 	float: right;
 	cursor: pointer;
 }
-
-
+.timer{
+		margin-left: 10px;
+}
 /*
 * Styles for modal
 */
@@ -129,7 +150,7 @@ h1 {
 	list-style: none;
 }
 
-.close {
+.closeButton {
 	margin-top: 25px;
 	background: #2e3d49;
 	color: #ffffff;
@@ -172,4 +193,114 @@ h1 {
 	right: 0;
 	bottom: 0;
 	background-color: rgba(0, 0, 0, 0.8);
+}
+/* animations */
+@keyframes flipUpYAxis {
+	from {
+		transform: perspective(400px) rotate3d(0, 1, 0, 180deg);
+		background: #2e3d49;
+		font-size: 0px;
+	}
+
+	40% {
+		transform: perspective(400px) rotate3d(0, 1, 0, 135deg);
+		background: #2e3d49;
+		font-size: 0px;
+	}
+
+	60% {
+		transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+		background: #2e3d49;
+			font-size: 0px;
+	}
+
+	80% {
+		transform: perspective(400px) rotate3d(0, 1, 0, 45deg);
+		background: #02b3e4;
+		font-size: 33px;
+	}
+
+	to {
+		transform: perspective(400px) rotate3d(0, 1, 0, 0deg);
+		background: #02b3e4;
+		font-size: 33px;
+	}
+}
+@keyframes flipDownYAxis {
+	from {
+		transform: perspective(400px) rotate3d(0, 1, 0, 0deg);
+		background: #ff0000;
+		font-size: 33px;
+	}
+
+	40% {
+		transform: perspective(400px) rotate3d(0, 1, 0, 45deg);
+		background: #ff0000;
+		font-size: 33px;
+	}
+
+	60% {
+		transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+		background: #ff0000;
+		font-size: 33px;
+	}
+
+	80% {
+		transform: perspective(400px) rotate3d(0, 1, 0, 135deg);
+		background: #2e3d49;
+		font-size: 0px;
+	}
+
+	to {
+		transform: perspective(400px) rotate3d(0, 1, 0, 180deg);
+		background: #2e3d49;
+		font-size: 0px;
+	}
+}
+@keyframes rubberBand {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	30% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+
+	40% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+
+	50% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+
+	65% {
+		transform: scale3d(.95, 1.05, 1);
+	}
+
+	75% {
+		transform: scale3d(1.05, .95, 1);
+	}
+
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+@keyframes shakeIt {
+	from {
+			transform: perspective(400px) rotate3d(0, 0, 1, 0deg);
+	}
+	75% {
+		transform: perspective(400px) rotate3d(0, 0, 1, -8deg);
+	}
+	50% {
+		transform: perspective(400px) rotate3d(0, 0, 1, 0deg);
+	}
+	25% {
+		transform: perspective(400px) rotate3d(0, 0, 1, 8deg);
+	}
+	to {
+		transform: perspective(400px) rotate3d(0, 0, 1, 0deg);
+	}
 }
